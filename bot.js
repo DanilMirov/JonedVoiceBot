@@ -18,7 +18,7 @@ client.on("message", message => {
 	  .setFooter("JonedVoice")
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
-	  member.send({embed});
+	  message.author.send({embed});
 	}
 });
 
