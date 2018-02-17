@@ -15,9 +15,9 @@ function getRandomInt(min, max) {
 
 //414479694453407744 - 
 
-client.on("") {
+// client.on("") {
 
-}
+// }
 
 client.on("guildMemberAdd", member => {
   const embed = new Discord.RichEmbed()
