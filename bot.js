@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const Rule = {st_admin: "371003132983115777", ml_admin: "371003796454899712", st_moder: "394505884266528788", ml_moder: "371003753781788684", creator: "406442606273363990"}
+const rule = {st_admin: "371003132983115777", ml_admin: "371003796454899712", st_moder: "394505884266528788", ml_moder: "371003753781788684", creator: "406442606273363990"}
 
 client.on("guildMemberAdd", member => {
   const embed = new Discord.RichEmbed()
@@ -35,7 +35,9 @@ client.on("message", message => {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
-  	} else if (command === "clear" && message.member.roles.has('411971931248787459')) {
+  	} else if (command === "clear") {
+  		if(!message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)) or message.member.id != '168255014282854401')
+  			return message.reply("Извините, ебобобам слово не давали!");
 		message.delete();
 		let content = message.content.slice(process.env.PREFIX.length + 8);
 		let messagecount = parseInt(args[0])+1;
