@@ -71,11 +71,10 @@ client.on("message", message => {
 			  	},
 			}});
 		}
-	} else if (command === "аватарка" && creators.includes(message.author.id)) {
+	} else if (command === "аватарка") {
 		let member = message.mentions.members.first();
-		if (!member) {
-			message.delete();
-			message.author.send({embed: {
+		if (!member) 
+		return message.author.send({embed: {
 				color: 16711680,
 				title: "Ошибка кражи",
 				description: `Тот, у кого вы пытались украсть аватарку или не существует, или украл у вас мозг.`,
@@ -83,13 +82,13 @@ client.on("message", message => {
 				  	text: "JonedVoice",
 			  	},
 			}});
-		}
 		const embed = new Discord.RichEmbed()
 		.setTitle(`Аватарка пользователя ${member.user.tag}`)
 		.setImage(member.user.avatarURL)
 		.setFooter("JonedVoice")
 		.setColor(parseInt(getRandomInt(0,16777214)));
 		message.channel.send({embed});
+		message.delete();
 	} else if (command == "помощь" || command == "помошь" || command == "помощ" || command == "помош" || command == "помоги" || command == "памаги" || command == "хэлп" || command == "хелп" || command == "help") {
 		var cmds = '';
 		if (creators.includes(message.author.id)) {
