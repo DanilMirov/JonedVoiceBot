@@ -66,7 +66,7 @@ client.on("message", message => {
 			  	},
 			}});
 		}
-	} else if (command === "test") {
+	} else if (command === "test" && creators.includes(message.author.id)) {
 		message.channel.send(args[0]);
 	} else {
 		message.reply({embed: {
