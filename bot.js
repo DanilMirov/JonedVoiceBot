@@ -9,6 +9,11 @@ function declOfNum(number, titles) {
     return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
 
 client.on("guildMemberAdd", member => {
   const embed = new Discord.RichEmbed()
@@ -32,7 +37,7 @@ client.on("message", message => {
 	const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
   	const command = args.shift().toLowerCase();
 
-	if (command == 'test_greetings') {
+	if (command == 'тест_приветствия') {
 	  const embed = new Discord.RichEmbed()
 	  .setTitle('Добро пожаловать')
 	  .setColor("#ee83ac")
@@ -41,11 +46,11 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	} else if (command === "say" && creators.includes(message.author.id)) {
+	} else if (command === "скажи" && creators.includes(message.author.id)) {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
-  	} else if (command === "clear") {
+  	} else if (command === "очистить") {
   		if(!message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)) && !creators.includes(message.author.id))
   			return message.reply("Извините, ебобобам слово не давали!");
 		message.delete();
@@ -66,11 +71,39 @@ client.on("message", message => {
 			  	},
 			}});
 		}
-	} else if (command === "test" && creators.includes(message.author.id)) {
+	} else if (command === "аватарка" && creators.includes(message.author.id)) {
 		let member = message.mentions.members.first();
-		if (member) {
-			message.channel.send(member.user.avatarURL)
+		if (!member) {
+			message.delete();
+			message.author.send({embed: {
+				color: 16711680,
+				title: "Ошибка кражи",
+				description: `Тот, у кого вы пытались украсть аватарку или не существует, или украл у вас мозг.`,
+				footer: {
+				  	text: "JonedVoice",
+			  	},
+			}});
 		}
+		message.channel.send(member.user.avatarURL)
+		const embed = new Discord.RichEmbed()
+		.setTitle(`Аватарка пользователя ${member.user.username}#${member.user.tag}`)
+		.setImage(member.user.avatarURL)
+		.setFooter("JonedVoice")
+		.setColor(`#${parseInt(getRandomInt(0,16777215), 16)}`);
+	} else if (command == "помощь" || command == "помошь" || command == "помощ" || command == "помош" || command == "помоги" || command == "памаги" || command == "хэлп" || command == "хелп" || command == "help") {
+		var cmds = null;
+		if (creators.includes(message.author.id)) {
+			cmds = cmds + `\`${process.env.PREFIX}скажи [текст]\` - написать сообщение от имени бота.\n`;
+		}
+		if(message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)) || creators.includes(message.author.id)) {
+			cmds = cmds + `\`${process.env.PREFIX}очистить [кол-во]\` - очистить определённое кол-во сообщений.\n`;
+		}
+		cmds = cmds + `\`${process.env.PREFIX}аватарка [упоминание человека]\` - украсть аватарку.\n`;
+		const embed = new Discord.RichEmbed()
+		.setTitle(`Помощь`)
+		.setFooter("JonedVoice")
+		.setColor(`#${parseInt(getRandomInt(0,16777215), 16)}`);
+		.setDescription(cmds);
 	} else {
 		message.reply({embed: {
 			color: 16711680,
