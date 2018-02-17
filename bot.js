@@ -85,7 +85,7 @@ client.on("message", message => {
 			}});
 		}
 		const embed = new Discord.RichEmbed()
-		.setTitle(`Аватарка пользователя ${member.user.username}#${member.user.tag}`)
+		.setTitle(`Аватарка пользователя ${member.user.tag}`)
 		.setImage(member.user.avatarURL)
 		.setFooter("JonedVoice")
 		.setColor(parseInt(getRandomInt(0,16777214)));
