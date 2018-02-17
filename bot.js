@@ -32,6 +32,11 @@ client.on("message", message => {
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   	}
+
+  	if(command === "ayy") {
+   const ayy = client.emojis.find("name", "WampusParty");
+   message.reply(`${ayy}`);
+	}
 });
 
 client.login(process.env.BOT_TOKEN);
