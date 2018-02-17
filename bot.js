@@ -84,7 +84,6 @@ client.on("message", message => {
 			  	},
 			}});
 		}
-		message.channel.send(member.user.avatarURL)
 		const embed = new Discord.RichEmbed()
 		.setTitle(`Аватарка пользователя ${member.user.username}#${member.user.tag}`)
 		.setImage(member.user.avatarURL)
@@ -92,7 +91,7 @@ client.on("message", message => {
 		.setColor(parseInt(getRandomInt(0,16777214)));
 		message.channel.send({embed});
 	} else if (command == "помощь" || command == "помошь" || command == "помощ" || command == "помош" || command == "помоги" || command == "памаги" || command == "хэлп" || command == "хелп" || command == "help") {
-		var cmds = null;
+		var cmds = '';
 		if (creators.includes(message.author.id)) {
 			cmds = cmds + `\`${process.env.PREFIX}скажи [текст]\` - написать сообщение от имени бота.\n`;
 		}
