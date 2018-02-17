@@ -13,8 +13,8 @@ client.on("guildMemberAdd", member => {
 });
 client.on("message", message => {
 	if (message.channel.id == '409054265626329105') {
-      	message.react("👍")
-      	message.react("👎")
+      	message.react("👍");
+      	message.react("👎");
 	}
 
 	if(message.author.bot) return;
