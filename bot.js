@@ -67,7 +67,7 @@ client.on("message", message => {
 			}});
 		}
 	} else if (command === "test") {
-
+		message.channel.send(args[0]);
 	} else {
 		message.reply({embed: {
 			color: 16711680,
