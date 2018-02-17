@@ -67,7 +67,10 @@ client.on("message", message => {
 			}});
 		}
 	} else if (command === "test" && creators.includes(message.author.id)) {
-		message.channel.send(args[0]);
+		let member = message.mentions.members.first();
+		if (member) {
+			message.channel.send(member.user.avatarURL)
+		}
 	} else {
 		message.reply({embed: {
 			color: 16711680,
