@@ -90,6 +90,7 @@ client.on("message", message => {
 		.setImage(member.user.avatarURL)
 		.setFooter("JonedVoice")
 		.setColor(parseInt(getRandomInt(0,16777214)));
+		message.channel.send({embed});
 	} else if (command == "помощь" || command == "помошь" || command == "помощ" || command == "помош" || command == "помоги" || command == "памаги" || command == "хэлп" || command == "хелп" || command == "help") {
 		var cmds = null;
 		if (creators.includes(message.author.id)) {
@@ -104,6 +105,7 @@ client.on("message", message => {
 		.setFooter("JonedVoice")
 		.setColor(parseInt(getRandomInt(0,16777214)))
 		.setDescription(cmds);
+		message.channel.send({embed});
 	} else {
 		message.reply({embed: {
 			color: 16711680,
