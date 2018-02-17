@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const Rule = {st_admin: "371003132983115777", ml_admin: "371003796454899712", st_moder: "394505884266528788", ml_moder: "371003753781788684", creator: "406442606273363990"}
 
 client.on("guildMemberAdd", member => {
   const embed = new Discord.RichEmbed()
@@ -11,6 +12,11 @@ client.on("guildMemberAdd", member => {
   member.send({embed});
 });
 client.on("message", message => {
+	if (message.channel.id == '409054265626329105') {
+      	message.react("👍")
+      	message.react("👎")
+	}
+
 	if(message.author.bot) return;
 	if(message.content.indexOf(process.env.PREFIX) !== 0) return;
 
@@ -25,7 +31,7 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	} else if(command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
+	} else if (command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
