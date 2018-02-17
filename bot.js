@@ -27,7 +27,6 @@ client.on("message", message => {
 
 	if(message.author.bot) return;
 	if(message.content.indexOf(process.env.PREFIX) !== 0) return;
-	console.log(`${message.author.id}: ${command}`)
 
 	const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
   	const command = args.shift().toLowerCase();
