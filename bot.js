@@ -30,8 +30,8 @@ client.on("message", message => {
 	if(command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    if (Attachment[0].url) {
-    	let lol = {file: Attachment[0].url}
+    if (message.Attachment[0].url) {
+    	let lol = {file: message.Attachment[0].url}
     } else {
     	let lol = {};
     }
