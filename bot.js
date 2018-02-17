@@ -39,12 +39,12 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	} else if (command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
+	} else if (command === "say" && message.author.id == "168255014282854401") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
   	} else if (command === "clear") {
-  		if(!message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)))
+  		if(!message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)) or !message.member)
   			return message.reply("Извините, ебобобам слово не давали!");
 		message.delete();
 		let content = message.content.slice(process.env.PREFIX.length + 8);
