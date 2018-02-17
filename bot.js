@@ -25,15 +25,38 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	}
-
-	if(command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
+	} else if(command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
-  	}
-
-  	if(command === "ayy") {
+  	} else if (command === "clear" && message.member.roles.has('411971931248787459')) {
+		message.delete();
+		let content = message.content.slice(process.env.PREFIX.length + 8);
+		let messagecount = parseInt(args[0])+1;
+		let msc = messagecount -1;
+		if (messagecount > 2) {
+			message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+			let lol = declOfNum(msc, ['сообщение', 'сообщения', 'сообщений']);
+			message.channel.send(`Удалено ${msc} ${lol}!`).then(msg => {msg.delete(5000)});
+		} else {
+			message.author.send({embed: {
+				color: 16711680,
+				title: "Ошибка удаления сообщений",
+				description: `\`${content}\` либо меньше двух, либо не является числом.`,
+				footer: {
+				  	text: "JonedVoice",
+			  	},
+			}});
+		}
+	} else {
+		message.reply({embed: {
+			color: 16711680,
+			title: "Ошибка",
+			description: `ЭЭЭЭ! Комманды \`${command}\` нету! Алло, ты шо, ебобо?`,
+			footer: {
+			  	text: "JonedVoice",
+		  	},
+		}})
 	}
 });
 
