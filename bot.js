@@ -30,7 +30,12 @@ client.on("message", message => {
 	if(command === "say" && message.author.id == "168255014282854401" || "207821802431315968") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    message.channel.send(sayMessage);
+    if (Attachment[0].url) {
+    	let lol = {file: Attachment[0].url}
+    } else {
+    	let lol = {};
+    }
+    message.channel.send(sayMessage, lol);
   	}
 
   	if(command === "ayy") {
