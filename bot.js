@@ -89,7 +89,7 @@ client.on("message", message => {
 		.setTitle(`Аватарка пользователя ${member.user.username}#${member.user.tag}`)
 		.setImage(member.user.avatarURL)
 		.setFooter("JonedVoice")
-		.setColor(${parseInt(getRandomInt(0,16777214), 16));
+		.setColor(parseInt(getRandomInt(0,16777214), 16));
 	} else if (command == "помощь" || command == "помошь" || command == "помощ" || command == "помош" || command == "помоги" || command == "памаги" || command == "хэлп" || command == "хелп" || command == "help") {
 		var cmds = null;
 		if (creators.includes(message.author.id)) {
