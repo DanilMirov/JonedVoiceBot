@@ -30,7 +30,7 @@ client.on("message", message => {
 	if(command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    if (sayMessage == null) {
+    if (sayMessage.trim() == null) {
     	message.reply('Ты ебобо??');
     } else {
     	message.channel.send(sayMessage);
