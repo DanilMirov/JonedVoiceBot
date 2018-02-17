@@ -27,6 +27,7 @@ client.on("message", message => {
 
 	if(message.author.bot) return;
 	if(message.content.indexOf(process.env.PREFIX) !== 0) return;
+	console.log(`${message.author.id}: ${command}`)
 
 	const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
   	const command = args.shift().toLowerCase();
@@ -39,7 +40,7 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	} else if (command === "say" && message.author.id == "168255014282854401" || message.author.id == "207821802431315968") {
+	} else if (command === "say" && creators.includes(message.author.id)) {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
