@@ -46,11 +46,11 @@ client.on("message", message => {
 	  .setThumbnail("https://cdn.discordapp.com/attachments/332255338805854208/411963427972579328/neon231.png")
 	  .setTimestamp()
 	  message.author.send({embed});
-	} else if (command === "скажи" && creators.includes(message.author.id)) {
+	} else if ((command === "скажи" || command === "say") && creators.includes(message.author.id)) {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage).catch(O_o=>{message.reply('ты ебобо?');});
-  	} else if (command === "очистить") {
+  	} else if (command === "очистить" || command == "clear") {
   		if(!message.member.roles.some(r=>[rule.st_moder, rule.ml_admin, rule.st_admin, rule.creator].includes(r.id)) && !creators.includes(message.author.id))
   			return message.reply("Извините, ебобобам слово не давали!");
 		message.delete();
@@ -71,7 +71,7 @@ client.on("message", message => {
 			  	},
 			}});
 		}
-	} else if (command === "аватарка") {
+	} else if (command === "аватарка" || command === "avatar") {
 		let member = message.mentions.members.first();
 		if (!member) 
 		return message.author.send({embed: {
