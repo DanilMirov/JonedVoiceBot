@@ -102,7 +102,7 @@ client.on("message", message => {
 		const embed = new Discord.RichEmbed()
 		.setTitle(`Помощь`)
 		.setFooter("JonedVoice")
-		.setColor(`#${parseInt(getRandomInt(0,16777215), 16)}`);
+		.setColor(`#${parseInt(getRandomInt(0,16777215), 16)}`)
 		.setDescription(cmds);
 	} else {
 		message.reply({embed: {
